@@ -105,6 +105,10 @@ def assemble(ctx, images, output, stamp = False):
         tools = inputs,
         outputs = [output],
         mnemonic = "JoinLayers",
+        # FIXME: This is necessary until the interpreter used by py_binary is
+        # more configurable. As a workaround, let users override $PATH with
+        # --action_env for this rule.
+        use_default_shell_env = True,
     )
 
 def incremental_load(
